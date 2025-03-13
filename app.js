@@ -79,9 +79,9 @@ app.listen(8080, ()=>{
     console.log("server is listening to port 8080");
 })
 
-// app.get("/", (req,res)=>{
-//     res.send("Hi I am root!");
-// })
+app.get("/", (req,res)=>{
+    res.render("/listings");
+})
 
 app.get("/privacy",(req,res)=>{
   res.render("listings/privacy.ejs");
