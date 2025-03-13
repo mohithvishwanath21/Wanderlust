@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const mapToken = process.env.MAP_TOKEN;
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const geocodingClient = mbxGeocoding({accessToken: mapToken});
+const Review = require("../models/review");
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -54,7 +55,6 @@ module.exports.createListing = async (req, res) => {
       console.error("Geocoding API failed for:", req.body.listing.location);
   }
     let savedListing = await newListing.save();
-    console.log("Saved Listing:", JSON.stringify(savedListing, null, 2)); // Ensure it includes geometry
     req.flash("success", "New Listing Created!!!");
     res.redirect("/listings");
 };
