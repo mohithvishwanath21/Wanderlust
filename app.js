@@ -80,7 +80,7 @@ app.listen(8080, ()=>{
 })
 
 app.get("/", (req,res)=>{
-    res.render("/listings");
+    res.redirect("/listings");
 })
 
 app.get("/privacy",(req,res)=>{
