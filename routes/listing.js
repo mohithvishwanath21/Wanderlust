@@ -42,5 +42,5 @@ router.get("/:id/edit", isLoggedIn,isOwner, wrapAsync(listingController.renderEd
 //Delete Route
 // router.delete("/:id", isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
-router.get("/filter/:type", listingController.filter);
+// router.get("/filter/:type", listingController.filter);
 module.exports = router;
