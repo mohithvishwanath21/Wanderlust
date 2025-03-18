@@ -1,4 +1,10 @@
   <% layout("/layouts/boilerplate") %>  
+  <style>
+    .type {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
 <div class="row mt-3">
   <div class="col-8 offset-2">
     
@@ -18,6 +24,23 @@
           required
         ></textarea>
         <div class="invalid-feedback">Please enter a short description</div>
+      </div>
+
+      <div class="mb-3 col-md-4 type">
+        <label for="type" class="form-label">type</label>
+        <select class="form-select" name="listing[type]">
+          <option selected value="trending">Trending</option>
+          <option value="rooms">Rooms</option>
+          <option value="mountains">Mountains</option>
+          <option value="castles">Castles</option>
+          <option value="cities">Iconic Cities</option>
+          <option value="pools">Pools</option>
+          <option value="camping">Camping</option>
+          <option value="farms">Farms</option>
+          <option value="arctic">Arctic</option>
+          <option value="domes">Domes</option>
+          <option value="boats">Boats</option>
+        </select>
       </div>
 
       <div class="mb-3">

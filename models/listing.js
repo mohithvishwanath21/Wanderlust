@@ -42,7 +42,13 @@ const listingSchema = new Schema({
       type:[Number],
       required:true
     }
-  }
+  },
+  type: {
+    type: String,
+  },
+  keywords: {
+    type: String,
+  },
 });
 
 listingSchema.post("findOneAndDelete", async(listing)=>{

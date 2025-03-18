@@ -112,6 +112,27 @@ module.exports.destroyListing = async (req, res) => {
     res.redirect("/listings");
 };
 
+module.exports.search = async (req, res) => {
+  let search = req.query.search;
+  search = search.toLowerCase();
+  let allListings = await Listing.find({ type: search });
+  if (allListings.length === 0) {
+    req.flash("error", "No such results found!");
+    return res.redirect("/listings");
+  }
+  res.render("listings/index.ejs", { allListings });
+};
 
+module.exports.filter = async (req, res) => {
+  let { type } = req.params;
+  console.log(type);
+  type = type.toLowerCase();
+  let allListings = await Listing.find({ type: type });
+  if (allListings.length === 0) {
+    req.flash("error", "No such results found!");
+    return res.redirect("/listings");
+  }
+  res.render("listings/index.ejs", { allListings });
+};
 
 
