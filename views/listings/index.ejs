@@ -217,8 +217,8 @@
          <div class="card-img-overlay"></div>
           <div class="card-body">
             <p class="card-text">
-              <b><%= listing.title %></b>
-              <p><%=listing.type%></p>
+              <b><%= listing.title %></b><br>
+              <%=listing.type%>
               <br>
               <% if (listing.price !== null && listing.price !== undefined) { %>
                    &#8377;<%= listing.price.toLocaleString("en-IN") %> / night  &nbsp;&nbsp;<i class="tax-info">+18% GST</i>
