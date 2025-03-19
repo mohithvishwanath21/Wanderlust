@@ -11,6 +11,8 @@ const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({ storage });
 
+router.get("/search", listingController.search);
+
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
@@ -44,6 +46,5 @@ router.get("/:id/edit", isLoggedIn,isOwner, wrapAsync(listingController.renderEd
 
 // router.get("/filter/:type", listingController.filter);
 // 
-router.get("/search", listingController.search);
 // 
 module.exports = router;
