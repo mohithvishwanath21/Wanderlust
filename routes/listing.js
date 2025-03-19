@@ -43,4 +43,7 @@ router.get("/:id/edit", isLoggedIn,isOwner, wrapAsync(listingController.renderEd
 // router.delete("/:id", isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
 // router.get("/filter/:type", listingController.filter);
+// 
+router.get("/search", listingController.search);
+// 
 module.exports = router;

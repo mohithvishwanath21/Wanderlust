@@ -33,12 +33,20 @@
           <a class="nav-link" href="/listings"><b>Explore</b></a>
         </div>
 
-        <div class="navbar-nav ms-auto ">
+        <!-- <div class="navbar-nav ms-auto ">
           <form class="d-flex " role="search">
             <input class="form-control me-2 search-input" type="search" placeholder="Search Destinations">
             <button class="btn  btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
           </form>
-        </div>
+        </div> -->
+
+        <form class="d-flex" role="search" action="/search" method="GET">
+          <input class="form-control me-2 search-input" type="search" name="search" placeholder="Search Destinations">
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+        </form>
+        
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb your home</a>
 

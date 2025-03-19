@@ -49,6 +49,11 @@ const listingSchema = new Schema({
   // keywords: {
   //   type: String,
   // },
+  type: {
+    type: String,
+    required: true,
+    lowercase: true // Ensures consistency in searches
+}
 });
 
 listingSchema.post("findOneAndDelete", async(listing)=>{

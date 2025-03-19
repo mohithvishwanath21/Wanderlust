@@ -135,4 +135,24 @@ module.exports.destroyListing = async (req, res) => {
 //   res.render("listings/index.ejs", { allListings });
 // };
 
+// 
+module.exports.search = async (req, res) => {
+  let search = req.query.search;
+  if (!search) {
+      req.flash("error", "Please enter a search query!");
+      return res.redirect("/listings");
+  }
+
+  search = search.toLowerCase(); // Convert search input to lowercase
+
+  let allListings = await Listing.find({ type: search });
+
+  if (allListings.length === 0) {
+      req.flash("error", "No results found!");
+      return res.redirect("/listings");
+  }
+
+  res.render("listings/index.ejs", { allListings });
+};
+// 
 
