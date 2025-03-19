@@ -52,7 +52,19 @@ const listingSchema = new Schema({
   type: {
     type: String,
     required: true,
-    lowercase: true // Ensures consistency in searches
+    enum: [
+      "trending",
+      "rooms",
+      "mountains",
+      "castles",
+      "cities",
+      "pools",
+      "camping",
+      "farms",
+      "arctic",
+      "domes",
+      "boats",
+    ], // Ensures consistency in searches
 }
 });
 
