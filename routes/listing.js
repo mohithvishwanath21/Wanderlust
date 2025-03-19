@@ -44,6 +44,6 @@ router.get("/:id/edit", isLoggedIn,isOwner, wrapAsync(listingController.renderEd
 
 // router.get("/filter/:type", listingController.filter);
 // 
-router.get("/search", listingController.search);
+router.get("/search", listing.search);
 // 
 module.exports = router;
