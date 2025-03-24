@@ -16,6 +16,7 @@ router.get("/search", listingController.search);
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+router.get("/filter/:category", wrapAsync(listingController.filterListings));
 // Both Index and Create Routes
 router.route("/")
 .get(wrapAsync(listingController.index))
