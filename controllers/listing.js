@@ -154,10 +154,6 @@ module.exports.search = async (req, res) => {
 
   res.render("listings/index.ejs", { allListings });
 };
-// 
-
-const Listing = require("../models/listing.js");
-
 module.exports.filterListings = async (req, res) => {
   try {
     const { category } = req.params;
@@ -188,3 +184,4 @@ module.exports.filterListings = async (req, res) => {
     res.status(500).send("Error fetching filtered listings");
   }
 };
+console.log(Listing)
