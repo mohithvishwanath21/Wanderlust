@@ -78,6 +78,20 @@ module.exports.updateListing = async (req, res) => {
   
     // Update all listing fields
     let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
+ // Update the location's coordinates if changed
+ if (req.body.listing.location && req.body.listing.location !== listing.location) {
+  let response = await geocodingClient
+      .forwardGeocode({
+          query: req.body.listing.location,
+          limit: 1,
+      })
+      .send();
+
+  listing.geometry = response.body.features.length > 0 
+      ? response.body.features[0].geometry 
+      : { type: "Point", coordinates: [0, 0] };
+}
+
   if(typeof req.file !== "undefined"){
     let url = req.file.path;
     let filename = req.file.filename;
