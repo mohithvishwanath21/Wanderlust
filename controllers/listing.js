@@ -156,3 +156,35 @@ module.exports.search = async (req, res) => {
 };
 // 
 
+const Listing = require("../models/listing.js");
+
+module.exports.filterListings = async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    // Map frontend category names to database field values
+    const categoryMap = {
+      trending: "Trending",
+      rooms: "Room",
+      mountains: "Mountain",
+      castles: "Castle",
+      cities: "City",
+      pools: "Pool",
+      camping: "Camping",
+      farms: "Farm",
+      arctic: "Arctic",
+      domes: "Dome",
+      boats: "Boat",
+    };
+
+    const categoryName = categoryMap[category] || category;
+
+    // Find listings based on category
+    const filteredListings = await Listing.find({ type: categoryName });
+
+    res.render("listings/index", { allListings: filteredListings });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching filtered listings");
+  }
+};
