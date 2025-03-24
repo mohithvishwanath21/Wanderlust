@@ -157,31 +157,44 @@ module.exports.search = async (req, res) => {
 module.exports.filterListings = async (req, res) => {
   try {
     const { type } = req.params;
+    console.log("Received type:", type);  // Log the type received
 
-    // Map frontend category names to database field values
-    const categoryMap = {
-      trending: "Trending",
-      rooms: "Room",
-      mountains: "Mountain",
-      castles: "Castle",
-      cities: "City",
-      pools: "Pool",
-      camping: "Camping",
-      farms: "Farm",
-      arctic: "Arctic",
-      domes: "Dome",
-      boats: "Boat",
+    // Ensure type exists and matches your predefined values
+    if (!type) {
+      req.flash("error", "Invalid filter type!");
+      return res.redirect("/listings");
+    }
+
+    // Map frontend type names to database field values (if needed)
+    const typeMap = {
+      trending: "trending",
+      rooms: "rooms",
+      mountains: "mountains",
+      castles: "castles",
+      cities: "cities",
+      pools: "pools",
+      camping: "camping",
+      farms: "farms",
+      arctic: "arctic",
+      domes: "domes",
+      boats: "boats",
     };
 
-    const categoryName = categoryMap[type] || type;
+    const typeName = typeMap[type] || type;
+    console.log("Mapped type:", typeName);  // Log what we are searching for
 
-    // Find listings based on category
-    const filteredListings = await Listing.find({ type: categoryName });
+    // Fetch listings from the database
+    const filteredListings = await Listing.find({ type: typeName });
+    console.log("Filtered Listings:", filteredListings.length);  // Log the count
+
+    if (filteredListings.length === 0) {
+      req.flash("error", "No listings found for this category!");
+      return res.redirect("/listings");
+    }
 
     res.render("listings/index", { allListings: filteredListings });
   } catch (error) {
-    console.error(error);
+    console.error("Error in filterListings:", error);
     res.status(500).send("Error fetching filtered listings");
   }
 };
-console.log(Listing)
