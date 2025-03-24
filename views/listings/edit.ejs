@@ -30,11 +30,28 @@
         <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required/>
         <div class="invalid-feedback">Price should be valid</div>
       </div>
-      <div class="mb-3 col-md-8">
+      <div class="mb-3 col-md-4 type">
+        <label for="type" class="form-label">type</label>
+        <select class="form-select" name="listing[type]">
+          <option selected value="trending">Trending</option>
+          <option value="rooms">Rooms</option>
+          <option value="mountains">Mountains</option>
+          <option value="castles">Castles</option>
+          <option value="cities">Iconic Cities</option>
+          <option value="pools">Pools</option>
+          <option value="camping">Camping</option>
+          <option value="farms">Farms</option>
+          <option value="arctic">Arctic</option>
+          <option value="domes">Domes</option>
+          <option value="boats">Boats</option>
+        </select>
+      </div>
+      <div class="mb-3 col-md-4">
         <label for="country" class="form-label">Country</label>
         <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required/>
         <div class="invalid-feedback">Country name should be valid</div>
       </div>
+      
     </div>
         <div class="mb-3">
       <label for="location" class="form-label">Location</label>
