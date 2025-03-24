@@ -156,7 +156,7 @@ module.exports.search = async (req, res) => {
 };
 module.exports.filterListings = async (req, res) => {
   try {
-    const { category } = req.params;
+    const { type } = req.params;
 
     // Map frontend category names to database field values
     const categoryMap = {
@@ -173,7 +173,7 @@ module.exports.filterListings = async (req, res) => {
       boats: "Boat",
     };
 
-    const categoryName = categoryMap[category] || category;
+    const categoryName = categoryMap[type] || type;
 
     // Find listings based on category
     const filteredListings = await Listing.find({ type: categoryName });
